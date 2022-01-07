@@ -4,8 +4,11 @@ import android.content.Context
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 
 interface Shape{
     fun onDraw()
@@ -81,5 +84,59 @@ class MainActivity : AppCompatActivity() {
         add(1,2,3,4,5,6,7)
         add(1)
 
+        //반복문
+        for(i in 2..9){}
+        for(i in 9 downTo 2){}
+        for(i in 2..9 step 2){}
+        for(i in 10 downTo 1 step 2){}
+        //for(i in 0..data.size-1){}
+
+        var nameList:Array<String> = arrayOf("Tom", "Bill")
+        for(name:String in nameList){}
+
+        //Readonly List
+        val nameLists = listOf("Mike", "Victoria")
+        for(i in 0..nameLists.size-1){nameLists.get(i)}
+
+        //Mutable List
+        var namesList = mutableListOf<String>()
+        namesList.add("Mike")
+        namesList.add("Victoria")
+
+
+    }
+
+    //switch문
+    fun showToast(array:ArrayList<String>)
+    {
+        when
+        {
+            array.size == 0 ->{
+                Toast.makeText(this, "Empty", Toast.LENGTH_SHORT).show()
+            }
+            (0<array.size) and (array.size <10)->{
+                Toast.makeText(this, "Good", Toast.LENGTH_SHORT).show()
+            }
+            array.size>10 ->{
+                Toast.makeText(this, "Out of size", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+    }
+
+    //list and map +-
+    fun printMap()
+    {
+        val map = mapOf(1 to "one", 2 to "two")
+        var newMap = map-1
+        Log.d("Example", "minus lsit : $newMap")
+        newMap += 3 to "three"
+        Log.d("Example", "plus list : $newMap")
+
+        val list = listOf("one", "two", "three")
+        var newList = list - "one"
+        Log.d("Example", "minus list : $newList")
+        newList += "four"
+        Log.d("Example", "plus list : $newList")
     }
 }
