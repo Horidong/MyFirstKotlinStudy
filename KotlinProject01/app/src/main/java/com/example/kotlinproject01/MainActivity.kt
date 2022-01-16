@@ -5,9 +5,12 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.Toast
 
 interface Shape{
@@ -139,4 +142,22 @@ class MainActivity : AppCompatActivity() {
         newList += "four"
         Log.d("Example", "plus list : $newList")
     }
+
+    //is & as
+    fun setLayoutParam(view: View)
+    {
+        if(view is LinearLayout)
+        {
+            var param : LinearLayout.LayoutParams = view.layoutParams as LinearLayout.LayoutParams
+            param.gravity = Gravity.BOTTOM
+            view.layoutParams = param
+        }
+        else if(view is RelativeLayout)
+        {
+            var param : RelativeLayout.LayoutParams = view.layoutParams as RelativeLayout.LayoutParams
+            param.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM)
+            view.layoutParams = param
+        }
+    }
+
 }
